@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Repository
 public class MovieRepository {
@@ -24,5 +25,12 @@ public class MovieRepository {
 
     public List<Movie> findAll() {
         return movies.values().stream().toList();
+    }
+
+    public List<Movie> findByTitle (String title) {
+        return this.findAll()
+            .stream()
+            .filter(movie -> movie.getTitle().contains(title))
+            .collect(Collectors.toList());
     }
 }

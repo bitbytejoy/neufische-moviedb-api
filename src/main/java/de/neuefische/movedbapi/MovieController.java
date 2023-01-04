@@ -17,7 +17,7 @@ public class MovieController {
     }
 
     @GetMapping
-    public List<Movie> getAll () {
-        return movieService.getAll();
+    public List<Movie> getAll (@RequestParam String title) {
+        return movieService.getAll(title);
     }
 }

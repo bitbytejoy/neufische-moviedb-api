@@ -14,7 +14,9 @@ public class MovieService {
         return movieRepository.save(movie);
     }
 
-    public List<Movie> getAll() {
-        return movieRepository.findAll();
+    public List<Movie> getAll(String title) {
+        return title != null && !title.isBlank()
+            ? movieRepository.findByTitle(title)
+            : movieRepository.findAll();
     }
 }
